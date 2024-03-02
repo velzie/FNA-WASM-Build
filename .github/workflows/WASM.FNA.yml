@@ -67,4 +67,12 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: WASM Libraries for ${{ matrix.variant }} on ${{ matrix.os }}
-          path: FNA-WASM.Binaries.zip  
+          path: FNA-WASM.Binaries.zip
+      - name: Make a release
+        uses: ncipollo/release-action@v1
+        with:
+          name: 'FNALibs WASM ${{ github.ref_name }}'
+          body: 'These are the FNA libs build for WASM (Emscripten)'
+          removeArtifacts: true
+          artifacts: "Binaries/*.a"
+          token: ${{ secrets.GITHUB_TOKEN }}
