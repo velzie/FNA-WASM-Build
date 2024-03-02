@@ -12,7 +12,7 @@ jobs:
   windows:
     strategy:
       matrix:
-        os: [ubuntu-18.04]
+        os: [ubuntu-latest]
         variant: [Release]
     runs-on: ${{ matrix.os }}
     name: WASM ${{ matrix.variant }} on ${{ matrix.os }}
