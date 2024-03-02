@@ -73,6 +73,8 @@ jobs:
         with:
           name: 'FNALibs WASM ${{ github.ref_name }}'
           body: 'These are the FNA libs build for WASM (Emscripten)'
+          commit: ${{ github.ref_name }}
+          tag: ${{ github.ref_name }}
           removeArtifacts: true
           artifacts: "Binaries/*.a"
           token: ${{ secrets.GITHUB_TOKEN }}
