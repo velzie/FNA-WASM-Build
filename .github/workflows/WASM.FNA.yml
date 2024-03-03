@@ -17,6 +17,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     name: WASM ${{ matrix.variant }} on ${{ matrix.os }}
     steps:
+      - name: generate random name
+        run: echo RELEASE_NAME=$(uuidgen) >> $GITHUB_ENV
       - name: Check out source
         uses: actions/checkout@v1
       - uses: mymindstorm/setup-emsdk@v14
@@ -71,10 +73,10 @@ jobs:
       - name: Make a release
         uses: ncipollo/release-action@v1
         with:
-          name: 'FNALibs WASM ${{ github.ref_name }}'
+          name: 'FNALibs WASM ${{ env.RELEASE_NAME }}'
           body: 'These are the FNA libs build for WASM (Emscripten)'
           commit: ${{ github.ref_name }}
-          tag: ${{ github.ref_name }}
+          tag: ${{ env.RELEASE_NAME }}
           removeArtifacts: true
           artifacts: "Binaries/*.a"
           token: ${{ secrets.GITHUB_TOKEN }}
