@@ -45,7 +45,7 @@ jobs:
           cd FNA3D
           mkdir build
           cd build
-          emcmake cmake .. -DSDL2_INCLUDE_DIRS=/home/runner/work/FNA-WASM-Build/FNA-WASM-Build/SDL/include -DSDL2_LIBRARIES=/home/runner/work/FNA-WASM-Build/FNA-WASM-Build/SDL/emscripten-build/emscripten-sdl2-installed/lib/libSDL2.a
+          emcmake cmake .. -DSDL2_INCLUDE_DIRS=/home/runner/work/FNA-WASM-Build/FNA-WASM-Build/SDL/include -DSDL2_LIBRARIES=/home/runner/work/FNA-WASM-Build/FNA-WASM-Build/SDL/emscripten-build/libSDL2.a
           emmake make
       - name: FAudio
         shell: bash
@@ -54,7 +54,7 @@ jobs:
           cd FAudio
           mkdir build
           cd build
-          emcmake cmake .. -DSDL2_INCLUDE_DIRS=/home/runner/work/FNA-WASM-Build/FNA-WASM-Build/SDL/include -DSDL2_LIBRARIES=/home/runner/work/FNA-WASM-Build/FNA-WASM-Build/SDL/emscripten-build/emscripten-sdl2-installed/lib/libSDL2.a
+          emcmake cmake .. -DSDL2_INCLUDE_DIRS=/home/runner/work/FNA-WASM-Build/FNA-WASM-Build/SDL/include -DSDL2_LIBRARIES=/home/runner/work/FNA-WASM-Build/FNA-WASM-Build/SDL/emscripten-build/libSDL2.a
           emmake make
       - name: Copy Binaries (with new names)
         shell: bash
