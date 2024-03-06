@@ -22,6 +22,12 @@ jobs:
       - name: Check out source
         uses: actions/checkout@v1
       - uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: 3.1.35
+      - name: Install ninja
+        run: |
+          sudo apt-get -y update
+          sudo apt-get install -y ninja-build
       - name: Verify
         run: emcc -v    
       - name: Check working directory
@@ -35,9 +41,14 @@ jobs:
           cd SDL
           mkdir emscripten-build
           cd emscripten-build
-          emcmake cmake ..
-          emmake make
-          emmake make install
+          emcmake cmake -S .. \
+            -DSDL_WERROR=ON \
+            -DSDL_TESTS=ON \
+            -DSDL_INSTALL_TESTS=ON \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DCMAKE_INSTALL_PREFIX=prefix \
+            -GNinja
+          cmake .. --verbose
       - name: FNA3D
         shell: bash
         run: |         
