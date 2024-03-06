@@ -37,7 +37,7 @@ jobs:
       - name: SDL2    
         shell: bash
         run: |
-          git clone -b release-2.28.5 https://github.com/libsdl-org/SDL
+          git clone -b SDL2 https://github.com/libsdl-org/SDL
           cd SDL
           mkdir emscripten-build
           cd emscripten-build
