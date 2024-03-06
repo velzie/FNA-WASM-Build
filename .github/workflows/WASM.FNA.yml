@@ -48,7 +48,7 @@ jobs:
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_INSTALL_PREFIX=prefix \
             -GNinja
-          cmake .. --verbose
+          ninja .. --verbose
       - name: FNA3D
         shell: bash
         run: |         
