@@ -41,7 +41,7 @@ jobs:
           cd SDL
           mkdir emscripten-build
           cd emscripten-build
-          emcmake cmake -S .. \
+          CFLAGS="-pthread" emcmake cmake -S .. \
             -DSDL_WERROR=ON \
             -DSDL_TESTS=ON \
             -DSDL_INSTALL_TESTS=ON \
@@ -54,6 +54,7 @@ jobs:
         run: |         
           git clone --recursive https://github.com/FNA-XNA/FNA3D
           cd FNA3D
+          git apply /home/runner/work/FNA-WASM-Build/FNA-WASM-Build/FNA3D.patch
           mkdir build
           cd build
           emcmake cmake .. -DSDL2_INCLUDE_DIRS=/home/runner/work/FNA-WASM-Build/FNA-WASM-Build/SDL/include -DSDL2_LIBRARIES=/home/runner/work/FNA-WASM-Build/FNA-WASM-Build/SDL/emscripten-build/libSDL2.a
