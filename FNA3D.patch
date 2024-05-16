@@ -6,9 +6,9 @@ index ccf645f..fbeb881 100644
  
  # Build flags
  if(NOT MSVC)
--       set_property(TARGET FNA3D PROPERTY COMPILE_FLAGS "-std=gnu99 -Wall -Wno-strict-aliasing -pedantic")
-+       set_property(TARGET FNA3D PROPERTY COMPILE_FLAGS "-pthread -std=gnu99 -Wall -Wno-strict-aliasing -pedantic")
-+       set_property(TARGET mojoshader PROPERTY COMPILE_FLAGS "-pthread")
+-	set_property(TARGET FNA3D PROPERTY COMPILE_FLAGS "-std=gnu99 -Wall -Wno-strict-aliasing -pedantic")
++	set_property(TARGET FNA3D PROPERTY COMPILE_FLAGS "-pthread -std=gnu99 -Wall -Wno-strict-aliasing -pedantic")
++	set_property(TARGET mojoshader PROPERTY COMPILE_FLAGS "-pthread")
  endif()
  if(BUILD_SHARED_LIBS)
-        set_property(TARGET mojoshader PROPERTY POSITION_INDEPENDENT_CODE ON)
+ 	set_property(TARGET mojoshader PROPERTY POSITION_INDEPENDENT_CODE ON)
