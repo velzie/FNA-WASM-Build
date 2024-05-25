@@ -39,6 +39,7 @@ jobs:
         run: |
           git clone -b SDL2 https://github.com/libsdl-org/SDL
           cd SDL
+          git apply /home/runner/work/FNA-WASM-Build/FNA-WASM-Build/SDL2.patch
           mkdir emscripten-build
           cd emscripten-build
           CFLAGS="-pthread" emcmake cmake -S .. \
