@@ -1,7 +1,7 @@
 # FNA-WASM-Build
 
 
-![WASM Build (FNA)](https://github.com/clarvalon/FNA-WASM-Build/workflows/WASM%20Build%20(FNA)/badge.svg)
+[![WASM Build (FNA)](https://github.com/r58Playz/FNA-WASM-Build/actions/workflows/WASM.FNA.yml/badge.svg)](https://github.com/r58Playz/FNA-WASM-Build/actions/workflows/WASM.FNA.yml)
 
 This repo is for automating the build of WebAssembly (WASM) native libraries for [FNA](https://fna-xna.github.io/), including:
 
