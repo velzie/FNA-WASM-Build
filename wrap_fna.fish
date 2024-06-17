@@ -1,4 +1,4 @@
-set FUNCS $(cat FNA3D/include/FNA3D.h | sed '/#/d' | tr -d '\n' | sed -e 's/\*\//\x00/g' -e 's/\/\*[^\x00]*\x00//g' -e 's/\t//g' -e 's/;/\n/g' -e 's/extern "C"//' | head -n -1 | grep FNA3DAPI | sed -e 's/.*FNA3DAPI //' -e 's/(void)/()/')
+set FUNCS $(cat FNA3D/include/FNA3D.h | sed '/#/d' | tr -d '\n' | sed -e 's/\*\//\x00/g' -e 's/\/\*[^\x00]*\x00//g' -e 's/\t//g' -e 's/;/\n/g' -e 's/extern "C"//' | head -n -1 | grep FNA3DAPI | sed -e 's/.*FNA3DAPI //' -e 's/(void)/()/' | sed -E 's/(\(.*)(void\* )/\1void */g')
 
 echo "#include \"FNA3D/include/FNA3D.h\""
 echo "#include <emscripten/proxying.h>"

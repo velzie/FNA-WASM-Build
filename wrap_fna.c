@@ -97,30 +97,30 @@ uint32_t WRAP_FNA3D_PrepareWindowAttributes()
 }
 
 typedef struct {
-	void* window;
+	void *window;
 	int32_t *w;
 	int32_t *h;
 } WRAP__struct_FNA3D_GetDrawableSize;
 void WRAP__MAIN__FNA3D_GetDrawableSize(void *wrap_struct_ptr) {
 	WRAP__struct_FNA3D_GetDrawableSize *wrap_struct = (WRAP__struct_FNA3D_GetDrawableSize*)wrap_struct_ptr;
 	FNA3D_GetDrawableSize(
-		wrap_struct->void*window,
+		wrap_struct->window,
 		wrap_struct->w,
 		wrap_struct->h
 	);
 }
-void WRAP_FNA3D_GetDrawableSize(void* window, int32_t *w, int32_t *h)
+void WRAP_FNA3D_GetDrawableSize(void *window, int32_t *w, int32_t *h)
 {
-	// $func: `void FNA3D_GetDrawableSize(void* window, int32_t *w, int32_t *h)`
+	// $func: `void FNA3D_GetDrawableSize(void *window, int32_t *w, int32_t *h)`
 	// $ret: `void`
 	// $name: `FNA3D_GetDrawableSize`
-	// $args: `void* window, int32_t *w, int32_t *h`
-	// $argsargs: `void*window,w,h`
+	// $args: `void *window, int32_t *w, int32_t *h`
+	// $argsargs: `window,w,h`
 	// $argc: `3`
 	//
-	// return FNA3D_GetDrawableSize(void*window,w,h);
+	// return FNA3D_GetDrawableSize(window,w,h);
 	WRAP__struct_FNA3D_GetDrawableSize wrap_struct = {
-		.void*window = void*window,
+		.window = window,
 		.w = w,
 		.h = h,
 	};
@@ -197,7 +197,7 @@ typedef struct {
 	FNA3D_Device *device;
 	FNA3D_Rect *sourceRectangle;
 	FNA3D_Rect *destinationRectangle;
-	void* overrideWindowHandle;
+	void *overrideWindowHandle;
 } WRAP__struct_FNA3D_SwapBuffers;
 void WRAP__MAIN__FNA3D_SwapBuffers(void *wrap_struct_ptr) {
 	WRAP__struct_FNA3D_SwapBuffers *wrap_struct = (WRAP__struct_FNA3D_SwapBuffers*)wrap_struct_ptr;
@@ -205,24 +205,24 @@ void WRAP__MAIN__FNA3D_SwapBuffers(void *wrap_struct_ptr) {
 		wrap_struct->device,
 		wrap_struct->sourceRectangle,
 		wrap_struct->destinationRectangle,
-		wrap_struct->void*overrideWindowHandle
+		wrap_struct->overrideWindowHandle
 	);
 }
-void WRAP_FNA3D_SwapBuffers(FNA3D_Device *device,FNA3D_Rect *sourceRectangle,FNA3D_Rect *destinationRectangle,void* overrideWindowHandle)
+void WRAP_FNA3D_SwapBuffers(FNA3D_Device *device,FNA3D_Rect *sourceRectangle,FNA3D_Rect *destinationRectangle,void *overrideWindowHandle)
 {
-	// $func: `void FNA3D_SwapBuffers(FNA3D_Device *device,FNA3D_Rect *sourceRectangle,FNA3D_Rect *destinationRectangle,void* overrideWindowHandle)`
+	// $func: `void FNA3D_SwapBuffers(FNA3D_Device *device,FNA3D_Rect *sourceRectangle,FNA3D_Rect *destinationRectangle,void *overrideWindowHandle)`
 	// $ret: `void`
 	// $name: `FNA3D_SwapBuffers`
-	// $args: `FNA3D_Device *device,FNA3D_Rect *sourceRectangle,FNA3D_Rect *destinationRectangle,void* overrideWindowHandle`
-	// $argsargs: `device,sourceRectangle,destinationRectangle,void*overrideWindowHandle`
+	// $args: `FNA3D_Device *device,FNA3D_Rect *sourceRectangle,FNA3D_Rect *destinationRectangle,void *overrideWindowHandle`
+	// $argsargs: `device,sourceRectangle,destinationRectangle,overrideWindowHandle`
 	// $argc: `4`
 	//
-	// return FNA3D_SwapBuffers(device,sourceRectangle,destinationRectangle,void*overrideWindowHandle);
+	// return FNA3D_SwapBuffers(device,sourceRectangle,destinationRectangle,overrideWindowHandle);
 	WRAP__struct_FNA3D_SwapBuffers wrap_struct = {
 		.device = device,
 		.sourceRectangle = sourceRectangle,
 		.destinationRectangle = destinationRectangle,
-		.void*overrideWindowHandle = void*overrideWindowHandle,
+		.overrideWindowHandle = overrideWindowHandle,
 	};
 	if (!emscripten_proxy_sync(emscripten_proxy_get_system_queue(), emscripten_main_runtime_thread_id(), WRAP__MAIN__FNA3D_SwapBuffers, (void*)&wrap_struct)) {
 		emscripten_run_script("console.error('wrap.fish: failed to proxy FNA3D_SwapBuffers')");
@@ -982,7 +982,7 @@ typedef struct {
 	int32_t y;
 	int32_t w;
 	int32_t h;
-	void* data;
+	void *data;
 	int32_t dataLength;
 } WRAP__struct_FNA3D_ReadBackbuffer;
 void WRAP__MAIN__FNA3D_ReadBackbuffer(void *wrap_struct_ptr) {
@@ -993,27 +993,27 @@ void WRAP__MAIN__FNA3D_ReadBackbuffer(void *wrap_struct_ptr) {
 		wrap_struct->y,
 		wrap_struct->w,
 		wrap_struct->h,
-		wrap_struct->void*data,
+		wrap_struct->data,
 		wrap_struct->dataLength
 	);
 }
-void WRAP_FNA3D_ReadBackbuffer(FNA3D_Device *device,int32_t x,int32_t y,int32_t w,int32_t h,void* data,int32_t dataLength)
+void WRAP_FNA3D_ReadBackbuffer(FNA3D_Device *device,int32_t x,int32_t y,int32_t w,int32_t h,void *data,int32_t dataLength)
 {
-	// $func: `void FNA3D_ReadBackbuffer(FNA3D_Device *device,int32_t x,int32_t y,int32_t w,int32_t h,void* data,int32_t dataLength)`
+	// $func: `void FNA3D_ReadBackbuffer(FNA3D_Device *device,int32_t x,int32_t y,int32_t w,int32_t h,void *data,int32_t dataLength)`
 	// $ret: `void`
 	// $name: `FNA3D_ReadBackbuffer`
-	// $args: `FNA3D_Device *device,int32_t x,int32_t y,int32_t w,int32_t h,void* data,int32_t dataLength`
-	// $argsargs: `device,x,y,w,h,void*data,dataLength`
+	// $args: `FNA3D_Device *device,int32_t x,int32_t y,int32_t w,int32_t h,void *data,int32_t dataLength`
+	// $argsargs: `device,x,y,w,h,data,dataLength`
 	// $argc: `7`
 	//
-	// return FNA3D_ReadBackbuffer(device,x,y,w,h,void*data,dataLength);
+	// return FNA3D_ReadBackbuffer(device,x,y,w,h,data,dataLength);
 	WRAP__struct_FNA3D_ReadBackbuffer wrap_struct = {
 		.device = device,
 		.x = x,
 		.y = y,
 		.w = w,
 		.h = h,
-		.void*data = void*data,
+		.data = data,
 		.dataLength = dataLength,
 	};
 	if (!emscripten_proxy_sync(emscripten_proxy_get_system_queue(), emscripten_main_runtime_thread_id(), WRAP__MAIN__FNA3D_ReadBackbuffer, (void*)&wrap_struct)) {
@@ -1329,7 +1329,7 @@ typedef struct {
 	int32_t w;
 	int32_t h;
 	int32_t level;
-	void* data;
+	void *data;
 	int32_t dataLength;
 } WRAP__struct_FNA3D_SetTextureData2D;
 void WRAP__MAIN__FNA3D_SetTextureData2D(void *wrap_struct_ptr) {
@@ -1342,20 +1342,20 @@ void WRAP__MAIN__FNA3D_SetTextureData2D(void *wrap_struct_ptr) {
 		wrap_struct->w,
 		wrap_struct->h,
 		wrap_struct->level,
-		wrap_struct->void*data,
+		wrap_struct->data,
 		wrap_struct->dataLength
 	);
 }
-void WRAP_FNA3D_SetTextureData2D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,int32_t level,void* data,int32_t dataLength)
+void WRAP_FNA3D_SetTextureData2D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,int32_t level,void *data,int32_t dataLength)
 {
-	// $func: `void FNA3D_SetTextureData2D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,int32_t level,void* data,int32_t dataLength)`
+	// $func: `void FNA3D_SetTextureData2D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,int32_t level,void *data,int32_t dataLength)`
 	// $ret: `void`
 	// $name: `FNA3D_SetTextureData2D`
-	// $args: `FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,int32_t level,void* data,int32_t dataLength`
-	// $argsargs: `device,texture,x,y,w,h,level,void*data,dataLength`
+	// $args: `FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,int32_t level,void *data,int32_t dataLength`
+	// $argsargs: `device,texture,x,y,w,h,level,data,dataLength`
 	// $argc: `9`
 	//
-	// return FNA3D_SetTextureData2D(device,texture,x,y,w,h,level,void*data,dataLength);
+	// return FNA3D_SetTextureData2D(device,texture,x,y,w,h,level,data,dataLength);
 	WRAP__struct_FNA3D_SetTextureData2D wrap_struct = {
 		.device = device,
 		.texture = texture,
@@ -1364,7 +1364,7 @@ void WRAP_FNA3D_SetTextureData2D(FNA3D_Device *device,FNA3D_Texture *texture,int
 		.w = w,
 		.h = h,
 		.level = level,
-		.void*data = void*data,
+		.data = data,
 		.dataLength = dataLength,
 	};
 	if (!emscripten_proxy_sync(emscripten_proxy_get_system_queue(), emscripten_main_runtime_thread_id(), WRAP__MAIN__FNA3D_SetTextureData2D, (void*)&wrap_struct)) {
@@ -1383,7 +1383,7 @@ typedef struct {
 	int32_t h;
 	int32_t d;
 	int32_t level;
-	void* data;
+	void *data;
 	int32_t dataLength;
 } WRAP__struct_FNA3D_SetTextureData3D;
 void WRAP__MAIN__FNA3D_SetTextureData3D(void *wrap_struct_ptr) {
@@ -1398,20 +1398,20 @@ void WRAP__MAIN__FNA3D_SetTextureData3D(void *wrap_struct_ptr) {
 		wrap_struct->h,
 		wrap_struct->d,
 		wrap_struct->level,
-		wrap_struct->void*data,
+		wrap_struct->data,
 		wrap_struct->dataLength
 	);
 }
-void WRAP_FNA3D_SetTextureData3D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t z,int32_t w,int32_t h,int32_t d,int32_t level,void* data,int32_t dataLength)
+void WRAP_FNA3D_SetTextureData3D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t z,int32_t w,int32_t h,int32_t d,int32_t level,void *data,int32_t dataLength)
 {
-	// $func: `void FNA3D_SetTextureData3D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t z,int32_t w,int32_t h,int32_t d,int32_t level,void* data,int32_t dataLength)`
+	// $func: `void FNA3D_SetTextureData3D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t z,int32_t w,int32_t h,int32_t d,int32_t level,void *data,int32_t dataLength)`
 	// $ret: `void`
 	// $name: `FNA3D_SetTextureData3D`
-	// $args: `FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t z,int32_t w,int32_t h,int32_t d,int32_t level,void* data,int32_t dataLength`
-	// $argsargs: `device,texture,x,y,z,w,h,d,level,void*data,dataLength`
+	// $args: `FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t z,int32_t w,int32_t h,int32_t d,int32_t level,void *data,int32_t dataLength`
+	// $argsargs: `device,texture,x,y,z,w,h,d,level,data,dataLength`
 	// $argc: `11`
 	//
-	// return FNA3D_SetTextureData3D(device,texture,x,y,z,w,h,d,level,void*data,dataLength);
+	// return FNA3D_SetTextureData3D(device,texture,x,y,z,w,h,d,level,data,dataLength);
 	WRAP__struct_FNA3D_SetTextureData3D wrap_struct = {
 		.device = device,
 		.texture = texture,
@@ -1422,7 +1422,7 @@ void WRAP_FNA3D_SetTextureData3D(FNA3D_Device *device,FNA3D_Texture *texture,int
 		.h = h,
 		.d = d,
 		.level = level,
-		.void*data = void*data,
+		.data = data,
 		.dataLength = dataLength,
 	};
 	if (!emscripten_proxy_sync(emscripten_proxy_get_system_queue(), emscripten_main_runtime_thread_id(), WRAP__MAIN__FNA3D_SetTextureData3D, (void*)&wrap_struct)) {
@@ -1440,7 +1440,7 @@ typedef struct {
 	int32_t h;
 	FNA3D_CubeMapFace cubeMapFace;
 	int32_t level;
-	void* data;
+	void *data;
 	int32_t dataLength;
 } WRAP__struct_FNA3D_SetTextureDataCube;
 void WRAP__MAIN__FNA3D_SetTextureDataCube(void *wrap_struct_ptr) {
@@ -1454,20 +1454,20 @@ void WRAP__MAIN__FNA3D_SetTextureDataCube(void *wrap_struct_ptr) {
 		wrap_struct->h,
 		wrap_struct->cubeMapFace,
 		wrap_struct->level,
-		wrap_struct->void*data,
+		wrap_struct->data,
 		wrap_struct->dataLength
 	);
 }
-void WRAP_FNA3D_SetTextureDataCube(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,FNA3D_CubeMapFace cubeMapFace,int32_t level,void* data,int32_t dataLength)
+void WRAP_FNA3D_SetTextureDataCube(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,FNA3D_CubeMapFace cubeMapFace,int32_t level,void *data,int32_t dataLength)
 {
-	// $func: `void FNA3D_SetTextureDataCube(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,FNA3D_CubeMapFace cubeMapFace,int32_t level,void* data,int32_t dataLength)`
+	// $func: `void FNA3D_SetTextureDataCube(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,FNA3D_CubeMapFace cubeMapFace,int32_t level,void *data,int32_t dataLength)`
 	// $ret: `void`
 	// $name: `FNA3D_SetTextureDataCube`
-	// $args: `FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,FNA3D_CubeMapFace cubeMapFace,int32_t level,void* data,int32_t dataLength`
-	// $argsargs: `device,texture,x,y,w,h,cubeMapFace,level,void*data,dataLength`
+	// $args: `FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,FNA3D_CubeMapFace cubeMapFace,int32_t level,void *data,int32_t dataLength`
+	// $argsargs: `device,texture,x,y,w,h,cubeMapFace,level,data,dataLength`
 	// $argc: `10`
 	//
-	// return FNA3D_SetTextureDataCube(device,texture,x,y,w,h,cubeMapFace,level,void*data,dataLength);
+	// return FNA3D_SetTextureDataCube(device,texture,x,y,w,h,cubeMapFace,level,data,dataLength);
 	WRAP__struct_FNA3D_SetTextureDataCube wrap_struct = {
 		.device = device,
 		.texture = texture,
@@ -1477,7 +1477,7 @@ void WRAP_FNA3D_SetTextureDataCube(FNA3D_Device *device,FNA3D_Texture *texture,i
 		.h = h,
 		.cubeMapFace = cubeMapFace,
 		.level = level,
-		.void*data = void*data,
+		.data = data,
 		.dataLength = dataLength,
 	};
 	if (!emscripten_proxy_sync(emscripten_proxy_get_system_queue(), emscripten_main_runtime_thread_id(), WRAP__MAIN__FNA3D_SetTextureDataCube, (void*)&wrap_struct)) {
@@ -1495,7 +1495,7 @@ typedef struct {
 	int32_t yHeight;
 	int32_t uvWidth;
 	int32_t uvHeight;
-	void* data;
+	void *data;
 	int32_t dataLength;
 } WRAP__struct_FNA3D_SetTextureDataYUV;
 void WRAP__MAIN__FNA3D_SetTextureDataYUV(void *wrap_struct_ptr) {
@@ -1509,20 +1509,20 @@ void WRAP__MAIN__FNA3D_SetTextureDataYUV(void *wrap_struct_ptr) {
 		wrap_struct->yHeight,
 		wrap_struct->uvWidth,
 		wrap_struct->uvHeight,
-		wrap_struct->void*data,
+		wrap_struct->data,
 		wrap_struct->dataLength
 	);
 }
-void WRAP_FNA3D_SetTextureDataYUV(FNA3D_Device *device,FNA3D_Texture *y,FNA3D_Texture *u,FNA3D_Texture *v,int32_t yWidth,int32_t yHeight,int32_t uvWidth,int32_t uvHeight,void* data,int32_t dataLength)
+void WRAP_FNA3D_SetTextureDataYUV(FNA3D_Device *device,FNA3D_Texture *y,FNA3D_Texture *u,FNA3D_Texture *v,int32_t yWidth,int32_t yHeight,int32_t uvWidth,int32_t uvHeight,void *data,int32_t dataLength)
 {
-	// $func: `void FNA3D_SetTextureDataYUV(FNA3D_Device *device,FNA3D_Texture *y,FNA3D_Texture *u,FNA3D_Texture *v,int32_t yWidth,int32_t yHeight,int32_t uvWidth,int32_t uvHeight,void* data,int32_t dataLength)`
+	// $func: `void FNA3D_SetTextureDataYUV(FNA3D_Device *device,FNA3D_Texture *y,FNA3D_Texture *u,FNA3D_Texture *v,int32_t yWidth,int32_t yHeight,int32_t uvWidth,int32_t uvHeight,void *data,int32_t dataLength)`
 	// $ret: `void`
 	// $name: `FNA3D_SetTextureDataYUV`
-	// $args: `FNA3D_Device *device,FNA3D_Texture *y,FNA3D_Texture *u,FNA3D_Texture *v,int32_t yWidth,int32_t yHeight,int32_t uvWidth,int32_t uvHeight,void* data,int32_t dataLength`
-	// $argsargs: `device,y,u,v,yWidth,yHeight,uvWidth,uvHeight,void*data,dataLength`
+	// $args: `FNA3D_Device *device,FNA3D_Texture *y,FNA3D_Texture *u,FNA3D_Texture *v,int32_t yWidth,int32_t yHeight,int32_t uvWidth,int32_t uvHeight,void *data,int32_t dataLength`
+	// $argsargs: `device,y,u,v,yWidth,yHeight,uvWidth,uvHeight,data,dataLength`
 	// $argc: `10`
 	//
-	// return FNA3D_SetTextureDataYUV(device,y,u,v,yWidth,yHeight,uvWidth,uvHeight,void*data,dataLength);
+	// return FNA3D_SetTextureDataYUV(device,y,u,v,yWidth,yHeight,uvWidth,uvHeight,data,dataLength);
 	WRAP__struct_FNA3D_SetTextureDataYUV wrap_struct = {
 		.device = device,
 		.y = y,
@@ -1532,7 +1532,7 @@ void WRAP_FNA3D_SetTextureDataYUV(FNA3D_Device *device,FNA3D_Texture *y,FNA3D_Te
 		.yHeight = yHeight,
 		.uvWidth = uvWidth,
 		.uvHeight = uvHeight,
-		.void*data = void*data,
+		.data = data,
 		.dataLength = dataLength,
 	};
 	if (!emscripten_proxy_sync(emscripten_proxy_get_system_queue(), emscripten_main_runtime_thread_id(), WRAP__MAIN__FNA3D_SetTextureDataYUV, (void*)&wrap_struct)) {
@@ -1549,7 +1549,7 @@ typedef struct {
 	int32_t w;
 	int32_t h;
 	int32_t level;
-	void* data;
+	void *data;
 	int32_t dataLength;
 } WRAP__struct_FNA3D_GetTextureData2D;
 void WRAP__MAIN__FNA3D_GetTextureData2D(void *wrap_struct_ptr) {
@@ -1562,20 +1562,20 @@ void WRAP__MAIN__FNA3D_GetTextureData2D(void *wrap_struct_ptr) {
 		wrap_struct->w,
 		wrap_struct->h,
 		wrap_struct->level,
-		wrap_struct->void*data,
+		wrap_struct->data,
 		wrap_struct->dataLength
 	);
 }
-void WRAP_FNA3D_GetTextureData2D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,int32_t level,void* data,int32_t dataLength)
+void WRAP_FNA3D_GetTextureData2D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,int32_t level,void *data,int32_t dataLength)
 {
-	// $func: `void FNA3D_GetTextureData2D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,int32_t level,void* data,int32_t dataLength)`
+	// $func: `void FNA3D_GetTextureData2D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,int32_t level,void *data,int32_t dataLength)`
 	// $ret: `void`
 	// $name: `FNA3D_GetTextureData2D`
-	// $args: `FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,int32_t level,void* data,int32_t dataLength`
-	// $argsargs: `device,texture,x,y,w,h,level,void*data,dataLength`
+	// $args: `FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,int32_t level,void *data,int32_t dataLength`
+	// $argsargs: `device,texture,x,y,w,h,level,data,dataLength`
 	// $argc: `9`
 	//
-	// return FNA3D_GetTextureData2D(device,texture,x,y,w,h,level,void*data,dataLength);
+	// return FNA3D_GetTextureData2D(device,texture,x,y,w,h,level,data,dataLength);
 	WRAP__struct_FNA3D_GetTextureData2D wrap_struct = {
 		.device = device,
 		.texture = texture,
@@ -1584,7 +1584,7 @@ void WRAP_FNA3D_GetTextureData2D(FNA3D_Device *device,FNA3D_Texture *texture,int
 		.w = w,
 		.h = h,
 		.level = level,
-		.void*data = void*data,
+		.data = data,
 		.dataLength = dataLength,
 	};
 	if (!emscripten_proxy_sync(emscripten_proxy_get_system_queue(), emscripten_main_runtime_thread_id(), WRAP__MAIN__FNA3D_GetTextureData2D, (void*)&wrap_struct)) {
@@ -1603,7 +1603,7 @@ typedef struct {
 	int32_t h;
 	int32_t d;
 	int32_t level;
-	void* data;
+	void *data;
 	int32_t dataLength;
 } WRAP__struct_FNA3D_GetTextureData3D;
 void WRAP__MAIN__FNA3D_GetTextureData3D(void *wrap_struct_ptr) {
@@ -1618,20 +1618,20 @@ void WRAP__MAIN__FNA3D_GetTextureData3D(void *wrap_struct_ptr) {
 		wrap_struct->h,
 		wrap_struct->d,
 		wrap_struct->level,
-		wrap_struct->void*data,
+		wrap_struct->data,
 		wrap_struct->dataLength
 	);
 }
-void WRAP_FNA3D_GetTextureData3D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t z,int32_t w,int32_t h,int32_t d,int32_t level,void* data,int32_t dataLength)
+void WRAP_FNA3D_GetTextureData3D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t z,int32_t w,int32_t h,int32_t d,int32_t level,void *data,int32_t dataLength)
 {
-	// $func: `void FNA3D_GetTextureData3D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t z,int32_t w,int32_t h,int32_t d,int32_t level,void* data,int32_t dataLength)`
+	// $func: `void FNA3D_GetTextureData3D(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t z,int32_t w,int32_t h,int32_t d,int32_t level,void *data,int32_t dataLength)`
 	// $ret: `void`
 	// $name: `FNA3D_GetTextureData3D`
-	// $args: `FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t z,int32_t w,int32_t h,int32_t d,int32_t level,void* data,int32_t dataLength`
-	// $argsargs: `device,texture,x,y,z,w,h,d,level,void*data,dataLength`
+	// $args: `FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t z,int32_t w,int32_t h,int32_t d,int32_t level,void *data,int32_t dataLength`
+	// $argsargs: `device,texture,x,y,z,w,h,d,level,data,dataLength`
 	// $argc: `11`
 	//
-	// return FNA3D_GetTextureData3D(device,texture,x,y,z,w,h,d,level,void*data,dataLength);
+	// return FNA3D_GetTextureData3D(device,texture,x,y,z,w,h,d,level,data,dataLength);
 	WRAP__struct_FNA3D_GetTextureData3D wrap_struct = {
 		.device = device,
 		.texture = texture,
@@ -1642,7 +1642,7 @@ void WRAP_FNA3D_GetTextureData3D(FNA3D_Device *device,FNA3D_Texture *texture,int
 		.h = h,
 		.d = d,
 		.level = level,
-		.void*data = void*data,
+		.data = data,
 		.dataLength = dataLength,
 	};
 	if (!emscripten_proxy_sync(emscripten_proxy_get_system_queue(), emscripten_main_runtime_thread_id(), WRAP__MAIN__FNA3D_GetTextureData3D, (void*)&wrap_struct)) {
@@ -1660,7 +1660,7 @@ typedef struct {
 	int32_t h;
 	FNA3D_CubeMapFace cubeMapFace;
 	int32_t level;
-	void* data;
+	void *data;
 	int32_t dataLength;
 } WRAP__struct_FNA3D_GetTextureDataCube;
 void WRAP__MAIN__FNA3D_GetTextureDataCube(void *wrap_struct_ptr) {
@@ -1674,20 +1674,20 @@ void WRAP__MAIN__FNA3D_GetTextureDataCube(void *wrap_struct_ptr) {
 		wrap_struct->h,
 		wrap_struct->cubeMapFace,
 		wrap_struct->level,
-		wrap_struct->void*data,
+		wrap_struct->data,
 		wrap_struct->dataLength
 	);
 }
-void WRAP_FNA3D_GetTextureDataCube(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,FNA3D_CubeMapFace cubeMapFace,int32_t level,void* data,int32_t dataLength)
+void WRAP_FNA3D_GetTextureDataCube(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,FNA3D_CubeMapFace cubeMapFace,int32_t level,void *data,int32_t dataLength)
 {
-	// $func: `void FNA3D_GetTextureDataCube(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,FNA3D_CubeMapFace cubeMapFace,int32_t level,void* data,int32_t dataLength)`
+	// $func: `void FNA3D_GetTextureDataCube(FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,FNA3D_CubeMapFace cubeMapFace,int32_t level,void *data,int32_t dataLength)`
 	// $ret: `void`
 	// $name: `FNA3D_GetTextureDataCube`
-	// $args: `FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,FNA3D_CubeMapFace cubeMapFace,int32_t level,void* data,int32_t dataLength`
-	// $argsargs: `device,texture,x,y,w,h,cubeMapFace,level,void*data,dataLength`
+	// $args: `FNA3D_Device *device,FNA3D_Texture *texture,int32_t x,int32_t y,int32_t w,int32_t h,FNA3D_CubeMapFace cubeMapFace,int32_t level,void *data,int32_t dataLength`
+	// $argsargs: `device,texture,x,y,w,h,cubeMapFace,level,data,dataLength`
 	// $argc: `10`
 	//
-	// return FNA3D_GetTextureDataCube(device,texture,x,y,w,h,cubeMapFace,level,void*data,dataLength);
+	// return FNA3D_GetTextureDataCube(device,texture,x,y,w,h,cubeMapFace,level,data,dataLength);
 	WRAP__struct_FNA3D_GetTextureDataCube wrap_struct = {
 		.device = device,
 		.texture = texture,
@@ -1697,7 +1697,7 @@ void WRAP_FNA3D_GetTextureDataCube(FNA3D_Device *device,FNA3D_Texture *texture,i
 		.h = h,
 		.cubeMapFace = cubeMapFace,
 		.level = level,
-		.void*data = void*data,
+		.data = data,
 		.dataLength = dataLength,
 	};
 	if (!emscripten_proxy_sync(emscripten_proxy_get_system_queue(), emscripten_main_runtime_thread_id(), WRAP__MAIN__FNA3D_GetTextureDataCube, (void*)&wrap_struct)) {
@@ -1904,7 +1904,7 @@ typedef struct {
 	FNA3D_Device *device;
 	FNA3D_Buffer *buffer;
 	int32_t offsetInBytes;
-	void* data;
+	void *data;
 	int32_t elementCount;
 	int32_t elementSizeInBytes;
 	int32_t vertexStride;
@@ -1916,28 +1916,28 @@ void WRAP__MAIN__FNA3D_SetVertexBufferData(void *wrap_struct_ptr) {
 		wrap_struct->device,
 		wrap_struct->buffer,
 		wrap_struct->offsetInBytes,
-		wrap_struct->void*data,
+		wrap_struct->data,
 		wrap_struct->elementCount,
 		wrap_struct->elementSizeInBytes,
 		wrap_struct->vertexStride,
 		wrap_struct->options
 	);
 }
-void WRAP_FNA3D_SetVertexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void* data,int32_t elementCount,int32_t elementSizeInBytes,int32_t vertexStride,FNA3D_SetDataOptions options)
+void WRAP_FNA3D_SetVertexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void *data,int32_t elementCount,int32_t elementSizeInBytes,int32_t vertexStride,FNA3D_SetDataOptions options)
 {
-	// $func: `void FNA3D_SetVertexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void* data,int32_t elementCount,int32_t elementSizeInBytes,int32_t vertexStride,FNA3D_SetDataOptions options)`
+	// $func: `void FNA3D_SetVertexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void *data,int32_t elementCount,int32_t elementSizeInBytes,int32_t vertexStride,FNA3D_SetDataOptions options)`
 	// $ret: `void`
 	// $name: `FNA3D_SetVertexBufferData`
-	// $args: `FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void* data,int32_t elementCount,int32_t elementSizeInBytes,int32_t vertexStride,FNA3D_SetDataOptions options`
-	// $argsargs: `device,buffer,offsetInBytes,void*data,elementCount,elementSizeInBytes,vertexStride,options`
+	// $args: `FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void *data,int32_t elementCount,int32_t elementSizeInBytes,int32_t vertexStride,FNA3D_SetDataOptions options`
+	// $argsargs: `device,buffer,offsetInBytes,data,elementCount,elementSizeInBytes,vertexStride,options`
 	// $argc: `8`
 	//
-	// return FNA3D_SetVertexBufferData(device,buffer,offsetInBytes,void*data,elementCount,elementSizeInBytes,vertexStride,options);
+	// return FNA3D_SetVertexBufferData(device,buffer,offsetInBytes,data,elementCount,elementSizeInBytes,vertexStride,options);
 	WRAP__struct_FNA3D_SetVertexBufferData wrap_struct = {
 		.device = device,
 		.buffer = buffer,
 		.offsetInBytes = offsetInBytes,
-		.void*data = void*data,
+		.data = data,
 		.elementCount = elementCount,
 		.elementSizeInBytes = elementSizeInBytes,
 		.vertexStride = vertexStride,
@@ -1953,7 +1953,7 @@ typedef struct {
 	FNA3D_Device *device;
 	FNA3D_Buffer *buffer;
 	int32_t offsetInBytes;
-	void* data;
+	void *data;
 	int32_t elementCount;
 	int32_t elementSizeInBytes;
 	int32_t vertexStride;
@@ -1964,27 +1964,27 @@ void WRAP__MAIN__FNA3D_GetVertexBufferData(void *wrap_struct_ptr) {
 		wrap_struct->device,
 		wrap_struct->buffer,
 		wrap_struct->offsetInBytes,
-		wrap_struct->void*data,
+		wrap_struct->data,
 		wrap_struct->elementCount,
 		wrap_struct->elementSizeInBytes,
 		wrap_struct->vertexStride
 	);
 }
-void WRAP_FNA3D_GetVertexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void* data,int32_t elementCount,int32_t elementSizeInBytes,int32_t vertexStride)
+void WRAP_FNA3D_GetVertexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void *data,int32_t elementCount,int32_t elementSizeInBytes,int32_t vertexStride)
 {
-	// $func: `void FNA3D_GetVertexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void* data,int32_t elementCount,int32_t elementSizeInBytes,int32_t vertexStride)`
+	// $func: `void FNA3D_GetVertexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void *data,int32_t elementCount,int32_t elementSizeInBytes,int32_t vertexStride)`
 	// $ret: `void`
 	// $name: `FNA3D_GetVertexBufferData`
-	// $args: `FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void* data,int32_t elementCount,int32_t elementSizeInBytes,int32_t vertexStride`
-	// $argsargs: `device,buffer,offsetInBytes,void*data,elementCount,elementSizeInBytes,vertexStride`
+	// $args: `FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void *data,int32_t elementCount,int32_t elementSizeInBytes,int32_t vertexStride`
+	// $argsargs: `device,buffer,offsetInBytes,data,elementCount,elementSizeInBytes,vertexStride`
 	// $argc: `7`
 	//
-	// return FNA3D_GetVertexBufferData(device,buffer,offsetInBytes,void*data,elementCount,elementSizeInBytes,vertexStride);
+	// return FNA3D_GetVertexBufferData(device,buffer,offsetInBytes,data,elementCount,elementSizeInBytes,vertexStride);
 	WRAP__struct_FNA3D_GetVertexBufferData wrap_struct = {
 		.device = device,
 		.buffer = buffer,
 		.offsetInBytes = offsetInBytes,
-		.void*data = void*data,
+		.data = data,
 		.elementCount = elementCount,
 		.elementSizeInBytes = elementSizeInBytes,
 		.vertexStride = vertexStride,
@@ -2071,7 +2071,7 @@ typedef struct {
 	FNA3D_Device *device;
 	FNA3D_Buffer *buffer;
 	int32_t offsetInBytes;
-	void* data;
+	void *data;
 	int32_t dataLength;
 	FNA3D_SetDataOptions options;
 } WRAP__struct_FNA3D_SetIndexBufferData;
@@ -2081,26 +2081,26 @@ void WRAP__MAIN__FNA3D_SetIndexBufferData(void *wrap_struct_ptr) {
 		wrap_struct->device,
 		wrap_struct->buffer,
 		wrap_struct->offsetInBytes,
-		wrap_struct->void*data,
+		wrap_struct->data,
 		wrap_struct->dataLength,
 		wrap_struct->options
 	);
 }
-void WRAP_FNA3D_SetIndexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void* data,int32_t dataLength,FNA3D_SetDataOptions options)
+void WRAP_FNA3D_SetIndexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void *data,int32_t dataLength,FNA3D_SetDataOptions options)
 {
-	// $func: `void FNA3D_SetIndexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void* data,int32_t dataLength,FNA3D_SetDataOptions options)`
+	// $func: `void FNA3D_SetIndexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void *data,int32_t dataLength,FNA3D_SetDataOptions options)`
 	// $ret: `void`
 	// $name: `FNA3D_SetIndexBufferData`
-	// $args: `FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void* data,int32_t dataLength,FNA3D_SetDataOptions options`
-	// $argsargs: `device,buffer,offsetInBytes,void*data,dataLength,options`
+	// $args: `FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void *data,int32_t dataLength,FNA3D_SetDataOptions options`
+	// $argsargs: `device,buffer,offsetInBytes,data,dataLength,options`
 	// $argc: `6`
 	//
-	// return FNA3D_SetIndexBufferData(device,buffer,offsetInBytes,void*data,dataLength,options);
+	// return FNA3D_SetIndexBufferData(device,buffer,offsetInBytes,data,dataLength,options);
 	WRAP__struct_FNA3D_SetIndexBufferData wrap_struct = {
 		.device = device,
 		.buffer = buffer,
 		.offsetInBytes = offsetInBytes,
-		.void*data = void*data,
+		.data = data,
 		.dataLength = dataLength,
 		.options = options,
 	};
@@ -2114,7 +2114,7 @@ typedef struct {
 	FNA3D_Device *device;
 	FNA3D_Buffer *buffer;
 	int32_t offsetInBytes;
-	void* data;
+	void *data;
 	int32_t dataLength;
 } WRAP__struct_FNA3D_GetIndexBufferData;
 void WRAP__MAIN__FNA3D_GetIndexBufferData(void *wrap_struct_ptr) {
@@ -2123,25 +2123,25 @@ void WRAP__MAIN__FNA3D_GetIndexBufferData(void *wrap_struct_ptr) {
 		wrap_struct->device,
 		wrap_struct->buffer,
 		wrap_struct->offsetInBytes,
-		wrap_struct->void*data,
+		wrap_struct->data,
 		wrap_struct->dataLength
 	);
 }
-void WRAP_FNA3D_GetIndexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void* data,int32_t dataLength)
+void WRAP_FNA3D_GetIndexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void *data,int32_t dataLength)
 {
-	// $func: `void FNA3D_GetIndexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void* data,int32_t dataLength)`
+	// $func: `void FNA3D_GetIndexBufferData(FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void *data,int32_t dataLength)`
 	// $ret: `void`
 	// $name: `FNA3D_GetIndexBufferData`
-	// $args: `FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void* data,int32_t dataLength`
-	// $argsargs: `device,buffer,offsetInBytes,void*data,dataLength`
+	// $args: `FNA3D_Device *device,FNA3D_Buffer *buffer,int32_t offsetInBytes,void *data,int32_t dataLength`
+	// $argsargs: `device,buffer,offsetInBytes,data,dataLength`
 	// $argc: `5`
 	//
-	// return FNA3D_GetIndexBufferData(device,buffer,offsetInBytes,void*data,dataLength);
+	// return FNA3D_GetIndexBufferData(device,buffer,offsetInBytes,data,dataLength);
 	WRAP__struct_FNA3D_GetIndexBufferData wrap_struct = {
 		.device = device,
 		.buffer = buffer,
 		.offsetInBytes = offsetInBytes,
-		.void*data = void*data,
+		.data = data,
 		.dataLength = dataLength,
 	};
 	if (!emscripten_proxy_sync(emscripten_proxy_get_system_queue(), emscripten_main_runtime_thread_id(), WRAP__MAIN__FNA3D_GetIndexBufferData, (void*)&wrap_struct)) {
