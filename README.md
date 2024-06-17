@@ -18,6 +18,7 @@ There is currently just one workflow:
 This fork contains a few patches:
 - `SDL2.patch` removes the calls to `EM_JS_DEPS` for `stringToUTF8` and `UTF8ToString` as those are runtime functions in Emscripten 3.1.34 which is what .NET 8 uses.
 - `FNA3D.patch` adds `-pthread` to the `CFLAGS` so FNA3D is built with WASM threads support.
+- `wrap_fna.fish` and `wrap_fna.c` wrap FNA3D and proxy it to the main thread.
 
 ## Usage
 
