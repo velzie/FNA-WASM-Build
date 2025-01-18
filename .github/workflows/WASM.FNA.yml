@@ -34,7 +34,7 @@ jobs:
         shell: bash
         run: |
           cd liba/
-          git clone -b v9.0.1 https://github.com/dotnet/runtime
+          git clone -b v9.0.1 --depth=1 https://github.com/dotnet/runtime
           emcc liba.c -r -o liba.o \
             -DHOST_BROWSER -DHOST_WASM -DTARGET_WASM \
             -Iruntime/src/mono/ -Iruntime/src/native/public/ -Iruntime/src/mono/mono/eglib/ -Iruntime/src/native/ -I.
@@ -105,5 +105,5 @@ jobs:
           commit: ${{ github.ref_name }}
           tag: ${{ env.RELEASE_NAME }}
           removeArtifacts: true
-          artifacts: "Binaries/*.a"
+          artifacts: "Binaries/*"
           token: ${{ secrets.GITHUB_TOKEN }}
