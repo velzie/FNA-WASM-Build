@@ -8,6 +8,8 @@
 
 #include <mono/metadata/class-internals.h>
 #include <mono/mini/interp/interp-internals.h>
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wint-conversion"
 
 int32_t _mincore(void *addr, void *length, void *vec) {
 	return mincore(addr, length, vec);

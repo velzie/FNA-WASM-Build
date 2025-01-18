@@ -26,8 +26,8 @@ jobs:
           version: 3.1.56
       - name: Install ninja
         run: |
-          sudo apt-get -y update
-          sudo apt-get install -y ninja-build
+          sudo apt -y update
+          sudo apt install -y ninja-build cmake llvm lld clang build-essential python-is-python3 curl git lldb libicu-dev liblttng-ust-dev libssl-dev libkrb5-dev ninja-build pigz cpio
       - name: Verify
         run: emcc -v    
       - name: LibA
@@ -38,6 +38,13 @@ jobs:
           emcc liba.c -r -o liba.o \
             -DHOST_BROWSER -DHOST_WASM -DTARGET_WASM \
             -Iruntime/src/mono/ -Iruntime/src/native/public/ -Iruntime/src/mono/mono/eglib/ -Iruntime/src/native/ -I.
+      - name: dotnet
+        shell: bash
+        run: |
+          cd liba/runtime/
+          git apply ../../dotnet.patch
+          ./build.sh -os browser -s mono+libs /p:WasmEnableThreads=true -c Release
+          7z a ../../Binaries/runtime.zip './artifacts/bin/microsoft.netcore.app.runtime.browser-wasm/Release/*'
       - name: SDL2    
         shell: bash
         run: |
