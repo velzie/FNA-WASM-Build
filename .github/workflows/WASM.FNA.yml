@@ -44,7 +44,7 @@ jobs:
           cd liba/runtime/
           git apply ../../dotnet.patch
           ./build.sh -os browser -s mono+libs /p:WasmEnableThreads=true -c Release
-          7z a ../../Binaries/runtime.zip './artifacts/bin/microsoft.netcore.app.runtime.browser-wasm/Release/*'
+          7z a ../runtime.zip './artifacts/bin/microsoft.netcore.app.runtime.browser-wasm/Release/*'
       - name: SDL2    
         shell: bash
         run: |
@@ -84,6 +84,7 @@ jobs:
         run: |
           mkdir Binaries
           cp ./liba/liba.o Binaries/liba.o
+          cp ./liba/runtime.zip Binaries/dotnet.zip
           cp ./SDL/emscripten-build/libSDL2.a Binaries/SDL2.a
           cp ./FNA3D/build/libFNA3D.a Binaries/FNA3D.a
           cp ./FNA3D/build/libmojoshader.a Binaries/libmojoshader.a    
