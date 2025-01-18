@@ -1,0 +1,6 @@
+#define SIZEOF_LONG_LONG 8
+#define SIZEOF_LONG 4
+#define SIZEOF_VOID_P 4
+
+#define HAVE_SEMAPHORE_H 1
+#define HAVE_SYS_TIME_H 1
