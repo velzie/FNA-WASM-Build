@@ -1,0 +1,43 @@
+diff --git a/src/mono/browser/runtime/driver.c b/src/mono/browser/runtime/driver.c
+index 2a1d5b1db..088a0c638 100644
+--- a/src/mono/browser/runtime/driver.c
++++ b/src/mono/browser/runtime/driver.c
+@@ -432,6 +432,7 @@ mono_wasm_profiler_init_browser (const char *desc)
+ 
+ #ifdef ENABLE_LOG_PROFILER
+ 
++/*
+ void mono_profiler_init_log (const char *desc);
+ 
+ EMSCRIPTEN_KEEPALIVE void
+@@ -439,6 +440,7 @@ mono_wasm_profiler_init_log (const char *desc)
+ {
+ 	mono_profiler_init_log (desc);
+ }
++*/
+ 
+ #endif
+ 
+@@ -570,4 +572,4 @@ mono_wasm_read_as_bool_or_null_unsafe (PVOLATILE(MonoObject) obj) {
+ 	end:
+ 	MONO_EXIT_GC_UNSAFE;
+ 	return result;
+-}
+\ No newline at end of file
++}
+diff --git a/src/mono/mono/mini/interp/transform.c b/src/mono/mono/mini/interp/transform.c
+index 4b1865b83..58ebf36a4 100644
+--- a/src/mono/mono/mini/interp/transform.c
++++ b/src/mono/mono/mini/interp/transform.c
+@@ -3489,7 +3489,9 @@ interp_transform_call (TransformData *td, MonoMethod *method, MonoMethod *target
+ 	if (target_method == NULL) {
+ 		if (calli) {
+ 			CHECK_STACK_RET(td, 1, FALSE);
+-			if (method->wrapper_type != MONO_WRAPPER_NONE)
++			if (token == 0xF0F0F0F0)
++				csignature = method->signature;
++			else if (method->wrapper_type != MONO_WRAPPER_NONE)
+ 				csignature = (MonoMethodSignature *)mono_method_get_wrapper_data (method, token);
+ 			else {
+ 				csignature = mono_metadata_parse_signature_checked (image, token, error);
+

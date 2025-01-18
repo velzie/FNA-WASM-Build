@@ -9,7 +9,8 @@ This repo is for automating the build of WebAssembly (WASM) native libraries for
 * [FAudio.a](https://github.com/FNA-XNA/FAudio) - XAudio reimplementation for FNA.
 * [SDL2.a](https://github.com/libsdl-org/SDL) - Simple DirectMedia Layer.
 * ~[libtheorafile.a](https://github.com/FNA-XNA/Theorafile) - Ogg Theora videos decoder library.~ (not yet implemented)
-- `liba` - Library used for MonoMod on WASM.
+* `liba` - Library used for MonoMod on WASM.
+* [dotnet](https://github.com/dotnet/runtime) - Patched dotnet wasm multithreaded runtime for MonoMod on WASM
 
 There is currently just one workflow:
 
