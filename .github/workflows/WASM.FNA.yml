@@ -58,6 +58,8 @@ jobs:
             -DSDL_INSTALL_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_INSTALL_PREFIX=prefix \
+            -DSDL_PTHREADS=ON \
+            -DSDL_PTHREADS_SEM=ON \
             -GNinja
           ninja --verbose
       - name: FNA3D
