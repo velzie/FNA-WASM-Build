@@ -7,7 +7,7 @@ This repo is for automating the build of WebAssembly (WASM) native libraries for
 
 * [FNA3D.a](https://github.com/FNA-XNA/FNA3D) - 3D graphics library for FNA.
 * [FAudio.a](https://github.com/FNA-XNA/FAudio) - XAudio reimplementation for FNA.
-* [SDL2.a](https://github.com/libsdl-org/SDL) - Simple DirectMedia Layer.
+* [SDL3.a](https://github.com/libsdl-org/SDL) - Simple DirectMedia Layer.
 * ~[libtheorafile.a](https://github.com/FNA-XNA/Theorafile) - Ogg Theora videos decoder library.~ (not yet implemented)
 * `liba` - Library used for MonoMod on WASM.
 * [dotnet](https://github.com/dotnet/runtime) - Patched dotnet wasm multithreaded runtime for MonoMod on WASM
@@ -17,10 +17,10 @@ There is currently just one workflow:
 1.  **WASM Build (FNA)**.  
 
 ## Patches
-This fork contains a few patches:
-- `SDL2.patch` removes the calls to `EM_JS_DEPS` for `stringToUTF8` and `UTF8ToString` as those are runtime functions in Emscripten 3.1.34 which is what .NET 8 uses.
+This fork contains a few patches (and uses SDL3 instead of SDL2):
+- `SDL3.patch` fixes some issues with `EM_ASM` not being proxied to main thread.
 - `FNA3D.patch` adds `-pthread` to the `CFLAGS` so FNA3D is built with WASM threads support.
-- `wrap_fna.fish` and `wrap_fna.c` wrap FNA3D and proxy it to the main thread.
+- `dotnet.patch` patches the dotnet runtime so MonoMod can be used
 
 ## Usage
 
