@@ -25,6 +25,34 @@ index 2a1d5b1db..088a0c638 100644
 -}
 \ No newline at end of file
 +}
+diff --git a/src/mono/mono/metadata/class.c b/src/mono/mono/metadata/class.c
+index c74c5c12e..b133a578a 100644
+--- a/src/mono/mono/metadata/class.c
++++ b/src/mono/mono/metadata/class.c
+@@ -6480,6 +6480,7 @@ can_access_member (MonoClass *access_klass, MonoClass *member_klass, MonoClass*
+ gboolean
+ mono_method_can_access_field (MonoMethod *method, MonoClassField *field)
+ {
++	return TRUE;
+ 	/* FIXME: check all overlapping fields */
+ 	int can = can_access_member (method->klass, m_field_get_parent (field), NULL, mono_field_get_type_internal (field)->attrs & FIELD_ATTRIBUTE_FIELD_ACCESS_MASK);
+ 	if (!can) {
+@@ -6515,6 +6516,7 @@ mono_method_get_method_definition (MonoMethod *method)
+ gboolean
+ mono_method_can_access_method (MonoMethod *method, MonoMethod *called)
+ {
++	return TRUE;
+ 	method = mono_method_get_method_definition (method);
+ 	called = mono_method_get_method_definition (called);
+ 	return mono_method_can_access_method_full (method, called, NULL);
+@@ -6534,6 +6536,7 @@ mono_method_can_access_method (MonoMethod *method, MonoMethod *called)
+ gboolean
+ mono_method_can_access_method_full (MonoMethod *method, MonoMethod *called, MonoClass *context_klass)
+ {
++	return TRUE;
+ 	/* Wrappers are except from access checks */
+ 	if (method->wrapper_type != MONO_WRAPPER_NONE || called->wrapper_type != MONO_WRAPPER_NONE)
+ 		return TRUE;
 diff --git a/src/mono/mono/mini/interp/transform.c b/src/mono/mono/mini/interp/transform.c
 index 4b1865b83..58ebf36a4 100644
 --- a/src/mono/mono/mini/interp/transform.c
@@ -40,4 +68,3 @@ index 4b1865b83..58ebf36a4 100644
  				csignature = (MonoMethodSignature *)mono_method_get_wrapper_data (method, token);
  			else {
  				csignature = mono_metadata_parse_signature_checked (image, token, error);
-
