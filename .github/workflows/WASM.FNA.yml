@@ -29,7 +29,21 @@ jobs:
           sudo apt -y update
           sudo apt install -y ninja-build cmake llvm lld clang build-essential python-is-python3 curl git lldb libicu-dev liblttng-ust-dev libssl-dev libkrb5-dev ninja-build pigz cpio spirv-headers
       - name: Verify
-        run: emcc -v    
+        run: emcc -v
+      - name: OpenSSL
+        shell: bash
+        run: |
+          # https://github.com/ading2210/libcurl.js/blob/b071019761fe4a9833f7f45b5f7fc2a15cb55e4a/client/tools/openssl.sh
+          PREFIX=$PWD/openssl/openssl-wasm
+          mkdir -p $PREFIX  
+          cd openssl
+          git clone -b openssl-3.4 --depth=1 https://github.com/openssl/openssl
+          cd openssl
+          export CFLAGS="-Wall -Oz"
+          export CXXFLAGS="-Wall -Oz"
+          emconfigure ./Configure linux-x32 --prefix=$PREFIX -no-asm -static -no-afalgeng -no-dso -DOPENSSL_SYS_NETWARE -DSIG_DFL=0 -DSIG_IGN=0 -DHAVE_FORK=0 -DOPENSSL_NO_AFALGENG=1 -DOPENSSL_NO_SPEED=1 -DOPENSSL_NO_DYNAMIC_ENGINE -DDLOPEN_FLAG=0
+          sed -i 's|^CROSS_COMPILE.*$|CROSS_COMPILE=|g' Makefile
+          emmake make -j$(nproc --all) build_generated libcrypto.a
       - name: LibA
         shell: bash
         run: |
@@ -92,6 +106,7 @@ jobs:
           cp ./FNA3D/build/libFNA3D.a Binaries/FNA3D.a
           cp ./FNA3D/build/libmojoshader.a Binaries/libmojoshader.a    
           cp ./FAudio/build/libFAudio.a Binaries/FAudio.a
+          cp ./openssl/openssl/libcrypto.a Binaries/libcrypto.a
       - name: Compress Binaries
         run: 7z a FNA-WASM.Binaries.zip Binaries/*
       - name: Archive ${{ matrix.variant }} WASM archive on ${{ matrix.os }}
