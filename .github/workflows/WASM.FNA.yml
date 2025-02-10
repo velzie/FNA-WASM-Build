@@ -34,7 +34,7 @@ jobs:
         shell: bash
         run: |
           # https://github.com/ading2210/libcurl.js/blob/b071019761fe4a9833f7f45b5f7fc2a15cb55e4a/client/tools/openssl.sh
-          PREFIX=$(realpath openssl/openssl-wasm)
+          PREFIX=$PWD/openssl/openssl-wasm
           mkdir -p $PREFIX  
           cd openssl
           git clone -b openssl-3.4 --depth=1 https://github.com/openssl/openssl
