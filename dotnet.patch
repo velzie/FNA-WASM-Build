@@ -25,6 +25,19 @@ index 2a1d5b1db..088a0c638 100644
 -}
 \ No newline at end of file
 +}
+diff --git a/src/mono/browser/runtime/startup.ts b/src/mono/browser/runtime/startup.ts
+index b27364136..af193fcbc 100644
+--- a/src/mono/browser/runtime/startup.ts
++++ b/src/mono/browser/runtime/startup.ts
+@@ -369,7 +369,7 @@ async function postRunAsync (userpostRun: (() => void)[]) {
+ 
+         // create /usr/share folder which is SpecialFolder.CommonApplicationData
+         Module["FS_createPath"]("/", "usr", true, true);
+-        Module["FS_createPath"]("/", "usr/share", true, true);
++        Module["FS_createPath"]("/usr", "share", true, true);
+ 
+         // all user Module.postRun callbacks
+         userpostRun.map(fn => fn());
 diff --git a/src/mono/mono/metadata/class.c b/src/mono/mono/metadata/class.c
 index c74c5c12e..b133a578a 100644
 --- a/src/mono/mono/metadata/class.c
