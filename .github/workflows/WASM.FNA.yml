@@ -51,7 +51,10 @@ jobs:
           git clone -b v9.0.1 --depth=1 https://github.com/dotnet/runtime
           emcc liba.c -r -o liba.o \
             -DHOST_BROWSER -DHOST_WASM -DTARGET_WASM \
-            -Iruntime/src/mono/ -Iruntime/src/native/public/ -Iruntime/src/mono/mono/eglib/ -Iruntime/src/native/ -I.
+            -Iruntime/src/mono/ -Iruntime/src/mono/mono/ -Iruntime/src/native/public/ -Iruntime/src/mono/mono/eglib/ -Iruntime/src/native/ -I.
+          emcc hot_reload_detour.c -r -o hot_reload_detour.o \
+            -DHOST_BROWSER -DHOST_WASM -DTARGET_WASM \
+            -Iruntime/src/mono/ -Iruntime/src/mono/mono/ -Iruntime/src/native/public/ -Iruntime/src/mono/mono/eglib/ -Iruntime/src/native/ -I.
       - name: dotnet
         shell: bash
         run: |
@@ -101,6 +104,7 @@ jobs:
         run: |
           mkdir Binaries
           cp ./liba/liba.o Binaries/liba.o
+          cp ./liba/hot_reload_detour.o Binaries/hot_reload_detour.o
           cp ./liba/runtime.zip Binaries/dotnet.zip
           cp ./SDL/emscripten-build/libSDL3.a Binaries/SDL3.a
           cp ./FNA3D/build/libFNA3D.a Binaries/FNA3D.a

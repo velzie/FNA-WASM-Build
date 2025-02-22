@@ -8,6 +8,7 @@
 
 #include <mono/metadata/class-internals.h>
 #include <mono/mini/interp/interp-internals.h>
+
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wint-conversion"
 
@@ -62,10 +63,18 @@ uint32_t magictranslatelen(InterpMethod *mono) {
 	return mono_method_get_header_internal(mono->method, NULL)->code_size;
 }
 
-InterpMethod *magiclookup(InterpMethod *mono) {
-	return mono_interp_get_imethod(mono->method);
-}
-
 void magicinvalidate(InterpMethod *mono) {
 	mono->transformed = 0;
+}
+
+extern void hot_reload_insert_detour(MonoImage *image, guint32 token, gpointer code);
+extern void hot_reload_remove_detour(MonoImage *image, guint32 token);
+
+void magicdetour2(InterpMethod *mono, gconstpointer code) {
+	mono_class_get_image(mono->method->klass)->has_updates = true;
+	hot_reload_insert_detour(mono_class_get_image(mono->method->klass), mono_metadata_token_index(mono->method->token), code);
+}
+
+void magicundetour2(InterpMethod *mono) {
+	hot_reload_remove_detour(mono_class_get_image(mono->method->klass), mono_metadata_token_index(mono->method->token));
 }
