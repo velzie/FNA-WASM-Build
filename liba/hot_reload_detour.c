@@ -326,7 +326,7 @@ hot_reload_stub_method_parent (MonoImage *image, uint32_t method_index)
 static void*
 hot_reload_stub_metadata_linear_search (MonoImage *base_image, MonoTableInfo *base_table, const void *key, BinarySearchComparer comparer)
 {
-	g_assert_not_reached ();
+	return NULL;
 }
 
 static uint32_t
@@ -368,19 +368,19 @@ hot_reload_stub_get_typedef_skeleton (MonoImage *base_image, uint32_t typedef_to
 static gboolean
 hot_reload_stub_get_typedef_skeleton_properties (MonoImage *base_image, uint32_t typedef_token, uint32_t *first_prop_idx, uint32_t *prop_count)
 {
-	g_assert_not_reached ();
+	return FALSE;
 }
 
 static gboolean
 hot_reload_stub_get_typedef_skeleton_events (MonoImage *base_image, uint32_t typedef_token, uint32_t *first_event_idx, uint32_t *event_count)
 {
-	g_assert_not_reached ();
+	return FALSE;
 }
 
 static MonoMethod *
 hot_reload_stub_added_methods_iter (MonoClass *klass, gpointer *iter)
 {
-	g_assert_not_reached ();
+	return NULL;
 }
 
 static MonoClassField *
@@ -392,19 +392,19 @@ hot_reload_stub_added_fields_iter (MonoClass *klass, gboolean lazy, gpointer *it
 static uint32_t
 hot_reload_get_num_fields_added (MonoClass *klass)
 {
-	g_assert_not_reached ();
+	return 0;
 }
 
 static uint32_t
 hot_reload_get_num_methods_added (MonoClass *klass)
 {
-	g_assert_not_reached ();
+	return 0;
 }
 
 static const char *
 hot_reload_get_capabilities (void)
 {
-	g_assert_not_reached ();
+	return "";
 }
 
 static uint32_t
@@ -422,7 +422,7 @@ hot_reload_stub_added_field_ldflda (MonoObject *instance, MonoType *field_type, 
 static MonoProperty *
 hot_reload_stub_added_properties_iter (MonoClass *klass, gpointer *iter)
 {
-	g_assert_not_reached ();
+	return NULL;
 }
 
 static uint32_t
@@ -434,7 +434,7 @@ hot_reload_stub_get_property_idx (MonoProperty *prop)
 MonoEvent *
 hot_reload_stub_added_events_iter (MonoClass *klass, gpointer *iter)
 {
-	g_assert_not_reached ();
+	return NULL;
 }
 
 static uint32_t

@@ -55,12 +55,24 @@ int32_t _uname(void *x) {
 }
 
 
-void *magictranslate(InterpMethod *mono) {
-	return mono_method_get_header_internal(mono->method, NULL)->code;
+const void *magictranslate(InterpMethod *mono) {
+	mono_class_get_image(mono->method->klass)->has_updates = FALSE;
+	MonoMethodHeader *header = mono_method_get_header(mono->method);
+	mono_class_get_image(mono->method->klass)->has_updates = TRUE;
+	if (!header) return NULL;
+	const void *code = header->code;
+	mono_metadata_free_mh(header);
+	return code;
 }
 
 uint32_t magictranslatelen(InterpMethod *mono) {
-	return mono_method_get_header_internal(mono->method, NULL)->code_size;
+	mono_class_get_image(mono->method->klass)->has_updates = FALSE;
+	MonoMethodHeader *header = mono_method_get_header(mono->method);
+	mono_class_get_image(mono->method->klass)->has_updates = TRUE;
+	if (!header) return 0;
+	uint32_t code_size = header->code_size;
+	mono_metadata_free_mh(header);
+	return code_size;
 }
 
 void magicinvalidate(InterpMethod *mono) {
@@ -70,8 +82,12 @@ void magicinvalidate(InterpMethod *mono) {
 extern void hot_reload_insert_detour(MonoImage *image, guint32 token, gpointer code);
 extern void hot_reload_remove_detour(MonoImage *image, guint32 token);
 
-void magicdetour2(InterpMethod *mono, gconstpointer code) {
-	mono_class_get_image(mono->method->klass)->has_updates = true;
+int magicdetour2allowed(InterpMethod *mono) {
+	return !mono->method->is_inflated && mono->method->wrapper_type == MONO_WRAPPER_NONE && !mono->method->sre_method;
+}
+
+void magicdetour2(InterpMethod *mono, gpointer code) {
+	mono_class_get_image(mono->method->klass)->has_updates = TRUE;
 	hot_reload_insert_detour(mono_class_get_image(mono->method->klass), mono_metadata_token_index(mono->method->token), code);
 }
 
