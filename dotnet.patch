@@ -38,6 +38,18 @@ index b27364136..af193fcbc 100644
  
          // all user Module.postRun callbacks
          userpostRun.map(fn => fn());
+diff --git a/src/mono/mono/metadata/class-setup-vtable.c b/src/mono/mono/metadata/class-setup-vtable.c
+index b2f13d72d..c5cc67398 100644
+--- a/src/mono/mono/metadata/class-setup-vtable.c
++++ b/src/mono/mono/metadata/class-setup-vtable.c
+@@ -773,6 +773,7 @@ mono_method_get_method_definition (MonoMethod *method)
+ static gboolean
+ verify_class_overrides (MonoClass *klass, MonoMethod **overrides, int onum)
+ {
++	return TRUE;
+ #ifndef ENABLE_CHECKED_BUILD
+ 	if (klass->image == mono_defaults.corlib)
+ 		return TRUE;
 diff --git a/src/mono/mono/metadata/class.c b/src/mono/mono/metadata/class.c
 index c74c5c12e..b133a578a 100644
 --- a/src/mono/mono/metadata/class.c
