@@ -171,7 +171,7 @@ index 43f3d3265..3269270f9 100644
  	}
  }
 diff --git a/src/mono/mono/mini/interp/transform.c b/src/mono/mono/mini/interp/transform.c
-index 4b1865b83..58ebf36a4 100644
+index 4b1865b83..e1c2ddbeb 100644
 --- a/src/mono/mono/mini/interp/transform.c
 +++ b/src/mono/mono/mini/interp/transform.c
 @@ -3489,7 +3489,9 @@ interp_transform_call (TransformData *td, MonoMethod *method, MonoMethod *target
@@ -185,3 +185,15 @@ index 4b1865b83..58ebf36a4 100644
  				csignature = (MonoMethodSignature *)mono_method_get_wrapper_data (method, token);
  			else {
  				csignature = mono_metadata_parse_signature_checked (image, token, error);
+@@ -9749,11 +9751,6 @@ mono_interp_transform_method (InterpMethod *imethod, ThreadContext *context, Mon
+ 	method_class_vt = mono_class_vtable_checked (imethod->method->klass, error);
+ 	return_if_nok (error);
+ 
+-	if (!method_class_vt->initialized) {
+-		mono_runtime_class_init_full (method_class_vt, error);
+-		return_if_nok (error);
+-	}
+-
+ 	MONO_PROFILER_RAISE (jit_begin, (method));
+ 
+ 	if (mono_method_signature_internal (method)->is_inflated)
