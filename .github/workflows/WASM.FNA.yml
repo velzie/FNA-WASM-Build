@@ -48,7 +48,7 @@ jobs:
         shell: bash
         run: |
           cd liba/
-          git clone -b v9.0.3 --depth=1 https://github.com/dotnet/runtime
+          git clone -b v9.0.4 --depth=1 https://github.com/dotnet/runtime
           emcc liba.c -r -o liba.o \
             -DHOST_BROWSER -DHOST_WASM -DTARGET_WASM \
             -Iruntime/src/mono/ -Iruntime/src/mono/mono/ -Iruntime/src/native/public/ -Iruntime/src/mono/mono/eglib/ -Iruntime/src/native/ -I.
