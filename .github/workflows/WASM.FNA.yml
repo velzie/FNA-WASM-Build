@@ -60,6 +60,7 @@ jobs:
         run: |
           cd liba/runtime/
           git apply ../../dotnet.patch
+          git apply ../../dotnet-jit.patch
           ./build.sh -os browser -s mono+libs /p:WasmEnableThreads=true -c Release
           7z a ../runtime.zip './artifacts/bin/microsoft.netcore.app.runtime.browser-wasm/Release/*'
       - name: SDL3
