@@ -55,22 +55,32 @@ int32_t _uname(void *x) {
 }
 
 
-const void *magictranslate(InterpMethod *mono) {
-	mono_class_get_image(mono->method->klass)->has_updates = FALSE;
+MonoMethodHeader *get_header(InterpMethod *mono) {
+	if (!mono || !mono->method) return NULL;
+	if (mono->method->klass)
+		mono_class_get_image(mono->method->klass)->has_updates = FALSE;
 	MonoMethodHeader *header = mono_method_get_header(mono->method);
-	mono_class_get_image(mono->method->klass)->has_updates = TRUE;
+	if (mono->method->klass)
+		mono_class_get_image(mono->method->klass)->has_updates = TRUE;
+	return header;
+}
+
+const void *magictranslate(InterpMethod *mono) {
+	MonoMethodHeader *header = get_header(mono);
 	if (!header) return NULL;
+
 	const void *code = header->code;
+
 	mono_metadata_free_mh(header);
 	return code;
 }
 
 uint32_t magictranslatelen(InterpMethod *mono) {
-	mono_class_get_image(mono->method->klass)->has_updates = FALSE;
-	MonoMethodHeader *header = mono_method_get_header(mono->method);
-	mono_class_get_image(mono->method->klass)->has_updates = TRUE;
+	MonoMethodHeader *header = get_header(mono);
 	if (!header) return 0;
+
 	uint32_t code_size = header->code_size;
+
 	mono_metadata_free_mh(header);
 	return code_size;
 }
