@@ -61,7 +61,7 @@ jobs:
           cd liba/runtime/
           git apply ../../dotnet.patch
           git apply ../../dotnet-jit.patch
-          ./build.sh -os browser -s mono+libs /p:WasmEnableThreads=true -c Release
+          ./build.sh -os browser -s mono+libs -c Release
           7z a ../runtime.zip './artifacts/bin/microsoft.netcore.app.runtime.browser-wasm/Release/*'
       - name: SDL3
         shell: bash
@@ -71,14 +71,12 @@ jobs:
           git apply /home/runner/work/FNA-WASM-Build/FNA-WASM-Build/SDL.patch
           mkdir emscripten-build
           cd emscripten-build
-          CFLAGS="-pthread" emcmake cmake -S .. \
+          emcmake cmake -S .. \
             -DSDL_WERROR=ON \
             -DSDL_TESTS=OFF \
             -DSDL_INSTALL_TESTS=OFF \
             -DCMAKE_BUILD_TYPE=Release \
             -DCMAKE_INSTALL_PREFIX=prefix \
-            -DSDL_PTHREADS=ON \
-            -DSDL_PTHREADS_SEM=ON \
             -GNinja
           ninja --verbose
       - name: FNA3D
